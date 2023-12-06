@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gallery</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/basiclightbox@5.0.4/dist/basicLightbox.min.css"
+      integrity="sha256-r7Neol40GubQBzMKAJovEaXbl9FClnADCrIMPljlx3E="
+      crossorigin="anonymous"
+    />
+    <style>
+      .gallery {
+        list-style-type: none;
+        display: flex;
+        width: 1440px;
+        height: 696px;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-content: center;
+        row-gap: 24px;
+        column-gap: 24px;
+        margin: 0;
+        padding: 0;
+      }
+
+      .gallery-image {
+        display: block;
+        width: 360px;
+        height: 200px;
+      }
+    </style>
+  </head>
+  <body>
+    <ul class="gallery"></ul>
+    <script
+      src="https://cdn.jsdelivr.net/npm/basiclightbox@5.0.4/dist/basicLightbox.min.js"
+      integrity="sha256-nMn34BfOxpKD0GwV5nZMwdS4e8SI8Ekz+G7dLeGE4XY="
+      crossorigin="anonymous"
+      async
+    ></script>
+    <script src="./js/gallery.js" type="module"></script>
+  </body>
+</html>
