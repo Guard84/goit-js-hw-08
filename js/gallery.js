@@ -87,6 +87,7 @@ gallery.addEventListener('click', (event) => {
     console.log(clickedOnImg);
   };
 
-  const myModal = basicLightbox.create(`<img width="1400" height="900" src="${clickedOnImg}">`).show()
+  const myModal = basicLightbox.create(`<img width="1400" height="900" 
+  src="${clickedOnImg}">`).show()
 });
 
