@@ -82,12 +82,27 @@ gallery.innerHTML = marcup;
 gallery.addEventListener('click', (event) => {
   event.preventDefault();
 
-  const clickedOnImg = event.target.dataset.source;
-  if (clickedOnImg) {
-    console.log(clickedOnImg);
+  const clickedOnImg = event.target.dataset.source
+  if (!clickedOnImg) {
+    return;
   };
+  console.log(clickedOnImg);
 
   const myModal = basicLightbox.create(`<img width="1400" height="900" 
-  src="${clickedOnImg}">`).show()
+  src="${clickedOnImg}">`,
+  {
+    onShow: (myModal) => {
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") {
+          myModal.close();
+        }
+    })},
+    onClose: (myModal) => {
+      document.removeEventListener("keydown", (event) => {
+        if (event.key === "Escape") {
+          myModal.close();
+          myModal = null;
+      }
+    })}
+  }).show();
 });
-
