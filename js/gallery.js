@@ -64,7 +64,7 @@ const images = [
   },
 ];
 
-const marcup = images.map(({ preview, original, description }) => 
+const markup = images.map(({ preview, original, description }) => 
  `<li class="gallery-item">
   <a class="gallery-link" href="${original}">
     <img
@@ -77,7 +77,13 @@ const marcup = images.map(({ preview, original, description }) =>
 </li>`).join('');
 
 const gallery = document.querySelector('.gallery');
-gallery.innerHTML = marcup;
+gallery.innerHTML = markup;
+
+const handleKeyDown = (event, modal) => {
+  if (event.key === "Escape") {
+    modal.close();
+  }
+};
 
 gallery.addEventListener('click', (event) => {
   event.preventDefault();
@@ -90,19 +96,13 @@ gallery.addEventListener('click', (event) => {
 
   const myModal = basicLightbox.create(`<img width="1400" height="900" 
   src="${clickedOnImg}">`,
-  {
-    onShow: (myModal) => {
-      document.addEventListener("keydown", (event) => {
-        if (event.key === "Escape") {
-          myModal.close();
-        }
-    })},
-    onClose: (myModal) => {
-      document.removeEventListener("keydown", (event) => {
-        if (event.key === "Escape") {
-          myModal.close();
-          myModal = null;
-      }
-    })}
-  }).show();
+    {
+    onShow: () => {
+      document.addEventListener("keydown", (event) => handleKeyDown(event, myModal));
+    },
+    onClose: () => {
+      document.removeEventListener("keydown", (event) => handleKeyDown(event, myModal));
+    }
+    })
+    myModal.show();
 });
